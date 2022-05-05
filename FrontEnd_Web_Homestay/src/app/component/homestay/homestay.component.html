@@ -1,0 +1,185 @@
+<div class="hero-wrap js-fullheight"
+     style="background-image: url('http://anhnendep.net/wp-content/uploads/2016/03/anh-dep-du-lich-viet-nam-vietnam-travel-ha-long-bay-01.jpg'); height: 680px">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center"
+         data-scrollax-parent="true">
+      <div class="col-md-9 text-center" style="margin-top: 24%">
+<!--        <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span-->
+<!--          class="mr-2"><a routerLink="home">Trang Chủ</a></span>|<span>&nbsp;Homestay</span></p>-->
+<!--        <br>-->
+        <h1 class="mb-3 bread" style="font-size: 70px">Homestay</h1>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<section class="ftco-section ftco-degree-bg">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-3 sidebar">
+        <div class="sidebar-wrap bg-light assets/images">
+          <h3 *ngIf="idAcc == null" class="heading mb-4"><span>Tìm kiếm</span>
+            <span style="margin-left: 30px"> | </span>
+            <span (click)="getAllHomestay()" style="margin-left: 30px; cursor: pointer">Tất cả</span></h3>
+          <h3 *ngIf="idAcc != null" class="heading mb-4"><span>Tìm kiếm</span>
+            <span style="margin-left: 30px"> | </span>
+            <span (click)="getAllHomestaySignIn()" style="margin-left: 30px; cursor: pointer">Tất cả</span></h3>
+          <form action="#" [formGroup]="formSearch">
+            <div class="fields">
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="Tên Homestay" formControlName="name">
+              </div>
+              <div class="form-group">
+                <div class="select-wrap one-third">
+                  <div class="icon"><span class="ion-ios-arrow-down"></span></div>
+                  <select name="" id="" class="form-control" formControlName="idCity" required>
+                    <option value="1">TP.Hà Nội</option>
+                    <option value="2">Hải Phòng</option>
+                    <option value="3">Quảng Ninh</option>
+                    <option value="4">Lào Cai</option>
+                    <option value="5">Đà Nẵng</option>
+                    <option value="6">Thừa Thiên Huế</option>
+                    <option value="7">Lâm Đồng</option>
+                    <option value="8">Khánh Hòa</option>
+                    <option value="9">Bình Định</option>
+                    <option value="10">TP.Hồ Chí Minh</option>
+                    <option value="11">Vũng Tàu</option>
+                    <option value="12">Kiên Giang</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="range-slider">
+		              		<span>
+										    <input type="number" value="{{price1}}" formControlName="price1" min="100000" max="20000000"/>	-
+										    <input type="number" value="{{price2}}" formControlName="price2" min="100000" max="20000000"/>
+										  </span>
+                      <span>VNĐ</span>
+                  <input #element1 value="200000" min="100000" max="20000000" step="10000" type="range"
+                         (change)="fetch1(element1.value)"/>
+                  <input #element2 value="15000000" min="100000" max="20000000" step="10000" type="range"
+                         (change)="fetch2(element2.value)"/>
+                </div>
+              </div>
+              <div class="form-group">
+                <input type="submit" (click)="searchHomestay()" [disabled]="formSearch.invalid" value="Tìm Kiếm" class="btn btn-primary py-3 px-5">
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="col-lg-9">
+        <div class="row" *ngIf="homestays == []">
+          <p id="notify-find"></p>
+          <p>Không tìm thấy Homestay.</p>
+        </div>
+        <div class="row" *ngIf="homestays != []">
+          <div class="col-md-4 assets/images" *ngFor="let h of homestayDTOS; index as i">
+            <div class="destination">
+              <div *ngIf="h.images != null" class="img img-2 d-flex justify-content-center align-items-center">
+                <img [routerLink]="['/homestay-detail/', h.id]" class="active"
+                     style="width: 254px; height: 200px; cursor: pointer"
+                     src="{{h.images}}" alt="">
+              </div>
+              <div *ngIf="h.images == null" class="img img-2 d-flex justify-content-center align-items-center">
+                <img [routerLink]="['/homestay-detail/', h.id]" class="active"
+                     style="width: 254px; height: 200px; cursor: pointer"
+                     src="https://cdn.vietnammoi.vn/171464242508312576/2020/6/29/247351093-1593370781884815416576.jpg" alt="">
+              </div>
+              <div class="text p-3">
+                <div class="d-flex">
+                  <div class="one">
+                    <h3 style="width: 220px; height: 56px"><a [routerLink]="['/homestay-detail/', h.id]">{{h.name}}</a></h3>
+                    <p style="width: 220px" *ngIf="h.roundRate == null" class="rate">
+                      <i class="icon-star-o"></i>
+                      <i class="icon-star-o"></i>
+                      <i class="icon-star-o"></i>
+                      <i class="icon-star-o"></i>
+                      <i class="icon-star-o"></i>
+                      <span>Chưa có đánh giá</span>
+                    </p>
+                    <p *ngIf="h.roundRate == 0" class="rate">
+                      <i class="icon-star-o"></i>
+                      <i class="icon-star-o"></i>
+                      <i class="icon-star-o"></i>
+                      <i class="icon-star-o"></i>
+                      <i class="icon-star-o"></i>
+                      <span>{{h.avgRate}} Sao</span>
+                    </p>
+                    <p *ngIf="h.roundRate == 1" class="rate">
+                      <i class="icon-star"></i>
+                      <i class="icon-star-o"></i>
+                      <i class="icon-star-o"></i>
+                      <i class="icon-star-o"></i>
+                      <i class="icon-star-o"></i>
+                      <span>{{h.avgRate}} Sao</span>
+                    </p>
+                    <p *ngIf="h.roundRate == 2" class="rate">
+                      <i class="icon-star"></i>
+                      <i class="icon-star"></i>
+                      <i class="icon-star-o"></i>
+                      <i class="icon-star-o"></i>
+                      <i class="icon-star-o"></i>
+                      <span>{{h.avgRate}} Sao</span>
+                    </p>
+                    <p *ngIf="h.roundRate == 3" class="rate">
+                      <i class="icon-star"></i>
+                      <i class="icon-star"></i>
+                      <i class="icon-star"></i>
+                      <i class="icon-star-o"></i>
+                      <i class="icon-star-o"></i>
+                      <span>{{h.avgRate}} Sao</span>
+                    </p>
+                    <p *ngIf="h.roundRate == 4" class="rate">
+                      <i class="icon-star"></i>
+                      <i class="icon-star"></i>
+                      <i class="icon-star"></i>
+                      <i class="icon-star"></i>
+                      <i class="icon-star-o"></i>
+                      <span>{{h.avgRate}} Sao</span>
+                    </p>
+                    <p *ngIf="h.roundRate == 5" class="rate">
+                      <i class="icon-star"></i>
+                      <i class="icon-star"></i>
+                      <i class="icon-star"></i>
+                      <i class="icon-star"></i>
+                      <i class="icon-star"></i>
+                      <span>{{h.avgRate}} Sao</span>
+                    </p>
+                    <div class="two">
+                      <p class="price per-price">{{h.price | currency :'đ' :true: '1.0-0'}}<small>/ngày</small></p>
+                    </div>
+                  </div>
+                </div>
+                <p class="format-form-p" style="height: 30px">{{h.description}}</p>
+                <hr>
+                <p class="bottom-area d-flex">
+                  <span class="format-form-span"><i class="icon-map-o"></i> {{h.address}}</span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .format-form-p {
+    height: 30px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .format-form-span {
+    width: 210px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+</style>

@@ -1,0 +1,93 @@
+<div class="hero-wrap js-fullheight" style="background-image: url('https://data.designervn.net/2020/06/11928_40275f3465223f15b32a583f7394156d.jpg'); height: 680px">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center"
+         data-scrollax-parent="true">
+      <div class="col-md-9 text-center" style="margin-top: 24%">
+<!--        <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span-->
+<!--          class="mr-2"><a routerLink="home">Trang Chủ</a></span>|<span>&nbsp;Tài Khoản</span></p>-->
+<!--        <br>-->
+        <h1 class="mb-3 bread" style="font-size: 70px">Tài Khoản</h1>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="ftco-section ftco-degree-bg">
+  <div class="container">
+    <div class="row block-9">
+
+      <!--            avatar-->
+      <div class="col-lg-4 sidebar">
+        <div class="sidebar-wrap bg-light ">
+          <h3 class="heading mb-4">Ảnh đại diện</h3>
+          <!--                    <img src="images/person_1.jpg" style="border-radius: 50%; width: 210px; height: 210px"/>-->
+          <img src="{{avataUrl}}" style="border-radius: 50%; width: 300px; height: 300px"/>
+          <hr>
+          <input type="file"
+                 id="file"
+                 (change)="onFileSelected($event)"
+                 name="image"
+                 autocomplete="off">
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-sm-2"></div>
+          <div class="">
+            <div class="form-group">
+              <input type="submit" value="Thay đổi mật khẩu" class="btn btn-primary py-3 px-5"
+                     (click)="openChangePass()">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!--            information-->
+      <div class="col-lg-8">
+        <div class="col-md-12 hotel-single  mb-5 mt-5">
+          <h4 class="mb-9">Thông tin cá nhân</h4>
+          <br>
+          <div class="row">
+            <div class="col-md-9">
+              <div class="destination">
+                <form  class="example-form" [formGroup]="formProfile">
+                  <p>
+                    <mat-form-field appearance="outline">
+                      <mat-label>Họ và tên</mat-label>
+                      <input matInput placeholder="Họ và tên" formControlName="name" name="name"  required>
+                      <mat-icon matSuffix>people</mat-icon>
+                    </mat-form-field>
+                  </p>
+                  <p>
+                    <mat-form-field appearance="outline">
+                      <mat-label>Email</mat-label>
+                      <input matInput placeholder="Email" formControlName="gmail" name="gmail"  readonly required>
+                      <mat-icon matSuffix>email</mat-icon>
+                    </mat-form-field>
+                  </p>
+                  <p>
+                    <mat-form-field appearance="outline">
+                      <mat-label>Số điện thoại</mat-label>
+                      <input matInput placeholder="Số điện thoại" formControlName="phone_number" name="phone_number" required>
+                      <mat-icon matSuffix>phone</mat-icon>
+                    </mat-form-field>
+                  </p>
+                  <p>
+                    <mat-form-field appearance="outline">
+                      <mat-label>Địa chỉ</mat-label>
+                      <input matInput placeholder="Địa chỉ" formControlName="address" name="address"  required>
+                      <mat-icon matSuffix>home</mat-icon>
+                    </mat-form-field>
+                  </p>
+                  <div class="form-group">
+                    <input (click)="updateProfile()" value="Cập nhật" class="btn btn-primary py-3 px-5" style="border-radius: 60px">
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

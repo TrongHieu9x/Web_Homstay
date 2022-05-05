@@ -1,0 +1,35 @@
+<form class="example-form" [formGroup]="formStatus">
+  <h1 mat-dialog-title>CẬP NHẬT TRẠNG THÁI</h1>
+  <mat-form-field class="example-full-width" appearance="outline">
+    <mat-label>Tên Nhà</mat-label>
+    <input type="text" matInput readonly value="{{homestay.name}}">
+  </mat-form-field>
+  <mat-form-field class="example-full-width" appearance="outline">
+    <mat-label>Địa Chỉ</mat-label>
+    <input type="text" matInput readonly value="{{homestay.address}}, {{homestay.city.name}}">
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Trạng Thái Homestay</mat-label>
+    <mat-select name="status" formControlName="status">
+      <mat-option [value]="1">Mở</mat-option>
+      <mat-option [value]="0">Đóng</mat-option>
+    </mat-select>
+  </mat-form-field>
+<!--  <div class="row">-->
+<!--    <div class="col-lg-4">-->
+<!--      <section class="example-section">-->
+<!--        <label for="img">Chọn Ảnh</label>-->
+<!--        <img id="img" alt="" style="border-radius: 50%; width: 80%">-->
+<!--        <input type="file"-->
+<!--               multiple-->
+<!--               (change)="uploadImage()"-->
+<!--               name="image"-->
+<!--               autocomplete="off">-->
+<!--      </section>-->
+<!--    </div>-->
+<!--  </div>-->
+  <div mat-dialog-actions [align]="'end'">
+    <button mat-raised-button mat-dialog-close>Đóng</button>
+    <button type="submit" mat-raised-button color="primary" (click)="editStatusHomestay()">Xác Nhận</button>
+  </div>
+</form>

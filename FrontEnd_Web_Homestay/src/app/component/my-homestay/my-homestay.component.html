@@ -1,0 +1,298 @@
+<div class="hero-wrap js-fullheight" style="background-image: url('https://images.foody.vn/images/10(112).jpg'); height: 680px">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center"
+         data-scrollax-parent="true">
+      <div class="col-md-9 text-center" style="margin-top: 24%">
+<!--        <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span-->
+<!--          class="mr-2"><a routerLink="home">Trang Chủ</a></span>|<span>&nbsp;Nhà Của Tôi</span></p>-->
+<!--        <br>-->
+        <h1 class="mb-3 bread" style="font-size: 70px">Nhà Của Tôi</h1>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="ftco-section ftco-degree-bg">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-3 sidebar">
+        <div class="sidebar-wrap bg-light ">
+          <h3 class="heading mb-4">Đánh giá chung</h3>
+          <form method="post" class="star-rating">
+            <div class="form-check">
+              <label class="form-check-label">
+                <p class="rate">
+                                    <span>
+                                        <i class="icon-star"></i>
+                                        <i class="icon-star"></i>
+                                        <i class="icon-star"></i>
+                                        <i class="icon-star"></i>
+                                        <i class="icon-star"></i>
+                                        <span>3.8</span>
+                                    </span>
+                </p>
+              </label>
+            </div>
+          </form>
+        </div>
+        <div class="sidebar-wrap bg-light ">
+          <h3 class="heading mb-4">Quản lý</h3>
+          <input (click)="openMyHomestay()" type="submit" value="Nhà Của Tôi" class="btn btn-primary py-3 px-5" style="width: 100%;">
+          <hr>
+          <input (click)="openMyBill()" type="submit" value="Đơn Thuê Nhà" class="btn btn-primary py-3 px-5" style="width: 100%;">
+          <hr>
+          <input (click)="openTurnOver()" type="submit" value="Doanh Thu" class="btn btn-primary py-3 px-5" style="width: 100%;">
+        </div>
+      </div>
+
+      <!--            My Homestay-->
+      <div class="col-lg-9" id="my-homestay">
+        <div class="col-md-12 hotel-single  mb-5 mt-5">
+          <input (click)="openCreateHome()" type="submit" value="Thêm Nhà" class="btn btn-info py-2 px-3"
+                 style="width: 20%; margin-left: 635px">
+        </div>
+        <div class="col-md-12 hotel-single  mb-5 mt-5">
+          <!--          <h1 class="mb-9">Related Hotels</h1>-->
+          <div class="row">
+            <div class="col-md-12">
+              <div class="destination" *ngFor="let h of homestays">
+                <img *ngIf="h.images != null" src="{{h.images}}" alt="" style="width: 795px; height: 200px">
+                <img *ngIf="h.images == null" src="https://cdn.vietnammoi.vn/171464242508312576/2020/6/29/247351093-1593370781884815416576.jpg" alt="" style="width: 795px; height: 200px">
+                <div class="text p-3">
+                  <div class="d-flex">
+                    <div class="one">
+                      <h3><a>{{h.name}}</a></h3>
+                      <p *ngIf="h.roundRate == null" class="rate">
+                        <i class="icon-star-o"></i>
+                        <i class="icon-star-o"></i>
+                        <i class="icon-star-o"></i>
+                        <i class="icon-star-o"></i>
+                        <i class="icon-star-o"></i>
+                        <span>Chưa có đánh giá</span>
+                      </p>
+                      <p *ngIf="h.roundRate == 0" class="rate">
+                        <i class="icon-star-o"></i>
+                        <i class="icon-star-o"></i>
+                        <i class="icon-star-o"></i>
+                        <i class="icon-star-o"></i>
+                        <i class="icon-star-o"></i>
+                        <span>{{h.avgRate}} Sao</span>
+                      </p>
+                      <p *ngIf="h.roundRate == 1" class="rate">
+                        <i class="icon-star"></i>
+                        <i class="icon-star-o"></i>
+                        <i class="icon-star-o"></i>
+                        <i class="icon-star-o"></i>
+                        <i class="icon-star-o"></i>
+                        <span>{{h.avgRate}} Sao</span>
+                      </p>
+                      <p *ngIf="h.roundRate == 2" class="rate">
+                        <i class="icon-star"></i>
+                        <i class="icon-star"></i>
+                        <i class="icon-star-o"></i>
+                        <i class="icon-star-o"></i>
+                        <i class="icon-star-o"></i>
+                        <span>{{h.avgRate}} Sao</span>
+                      </p>
+                      <p *ngIf="h.roundRate == 3" class="rate">
+                        <i class="icon-star"></i>
+                        <i class="icon-star"></i>
+                        <i class="icon-star"></i>
+                        <i class="icon-star-o"></i>
+                        <i class="icon-star-o"></i>
+                        <span>{{h.avgRate}} Sao</span>
+                      </p>
+                      <p *ngIf="h.roundRate == 4" class="rate">
+                        <i class="icon-star"></i>
+                        <i class="icon-star"></i>
+                        <i class="icon-star"></i>
+                        <i class="icon-star"></i>
+                        <i class="icon-star-o"></i>
+                        <span>{{h.avgRate}} Sao</span>
+                      </p>
+                      <p *ngIf="h.roundRate == 5" class="rate">
+                        <i class="icon-star"></i>
+                        <i class="icon-star"></i>
+                        <i class="icon-star"></i>
+                        <i class="icon-star"></i>
+                        <i class="icon-star"></i>
+                        <span>{{h.avgRate}} Sao</span>
+                      </p>
+                    </div>
+                    <div class="two" style="margin-left: -70px">
+                      <span class="price per-price">{{h.price | currency :'đ' :true: '1.0-0'}}<small>/ngày</small></span>
+                    </div>
+                  </div>
+                  <p style="width: 760px">{{h.description}}</p>
+                  <hr>
+                  <p class="bottom-area d-flex row">
+                    <span class="col-sm-8"><i class="icon-map-o"></i> {{h.address}}</span>
+                    <button style="margin-left: 500px" class="btn btn-info col-sm-2" (click)="openImageHomestay(h.id)">Thêm ảnh</button>
+                    <button class="btn btn-warning col-sm-2" (click)="openEditStatus(h.id)">Chỉnh sửa</button>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!--                History-->
+      <div class="col-lg-9" style="display: none" id="my-bill">
+        <h4>Đơn thuê nhà</h4>
+        <div class="col-md-12 hotel-single  mb-5 mt-5">
+          <div class="row">
+            <div class="col-md-12" *ngFor="let b of yourBill">
+              <div class="destination">
+                <div class="text p-3">
+                  <div class="d-flex">
+                    <div class="one">
+                      <h3><a>{{b.homestayName}}</a></h3>
+                      <p *ngIf="b.roundRate == null" class="rate">
+                        <i class="icon-star-o"></i>
+                        <i class="icon-star-o"></i>
+                        <i class="icon-star-o"></i>
+                        <i class="icon-star-o"></i>
+                        <i class="icon-star-o"></i>
+                        <span>Chưa có đánh giá</span>
+                      </p>
+                      <p *ngIf="b.roundRate == 0" class="rate">
+                        <i class="icon-star-o"></i>
+                        <i class="icon-star-o"></i>
+                        <i class="icon-star-o"></i>
+                        <i class="icon-star-o"></i>
+                        <i class="icon-star-o"></i>
+                        <span>{{b.avgRate}} Sao</span>
+                      </p>
+                      <p *ngIf="b.roundRate == 1" class="rate">
+                        <i class="icon-star"></i>
+                        <i class="icon-star-o"></i>
+                        <i class="icon-star-o"></i>
+                        <i class="icon-star-o"></i>
+                        <i class="icon-star-o"></i>
+                        <span>{{b.avgRate}} Sao</span>
+                      </p>
+                      <p *ngIf="b.roundRate == 2" class="rate">
+                        <i class="icon-star"></i>
+                        <i class="icon-star"></i>
+                        <i class="icon-star-o"></i>
+                        <i class="icon-star-o"></i>
+                        <i class="icon-star-o"></i>
+                        <span>{{b.avgRate}} Sao</span>
+                      </p>
+                      <p *ngIf="b.roundRate == 3" class="rate">
+                        <i class="icon-star"></i>
+                        <i class="icon-star"></i>
+                        <i class="icon-star"></i>
+                        <i class="icon-star-o"></i>
+                        <i class="icon-star-o"></i>
+                        <span>{{b.avgRate}} Sao</span>
+                      </p>
+                      <p *ngIf="b.roundRate == 4" class="rate">
+                        <i class="icon-star"></i>
+                        <i class="icon-star"></i>
+                        <i class="icon-star"></i>
+                        <i class="icon-star"></i>
+                        <i class="icon-star-o"></i>
+                        <span>{{b.avgRate}} Sao</span>
+                      </p>
+                      <p *ngIf="b.roundRate == 5" class="rate">
+                        <i class="icon-star"></i>
+                        <i class="icon-star"></i>
+                        <i class="icon-star"></i>
+                        <i class="icon-star"></i>
+                        <i class="icon-star"></i>
+                        <span>{{b.avgRate}} Sao</span>
+                      </p>
+                    </div>
+                    <div class="two" style="margin-left: -50px">
+                      <span class="price per-price">{{b.price | currency :'đ' :true: '1.0-0'}}</span>
+                    </div>
+                  </div>
+                  <p>Người đặt: <a>{{b.accountName}}</a> - Thời gian đặt: <span>{{b.regisDate}}</span></p>
+                  <p>Ngày bắt đầu: <span>{{b.startDate}}</span> - Ngày kết thúc: <span>{{b.endDate}}</span></p>
+                  <hr>
+                  <p class="bottom-area d-flex">
+                    <span *ngIf="b.statusHomeId == 1" class="ml-auto">
+                      <button class="btn btn-primary" *ngIf="!onCheckToday(b.startDate)" (click)="openCancellingInvoiceHost(b)">Hủy thuê</button>
+                      <button class="btn btn-warning" (click)="openConfirmHost(b)">Xác nhận thuê</button></span>
+                    <span *ngIf="b.statusHomeId == 2" class="ml-auto">
+                      <button class="btn btn-success" disabled>Đã xác nhận</button></span>
+                    <span *ngIf="b.statusHomeId == 3" class="ml-auto">
+                      <button class="btn btn-info" disabled>Đang ở</button></span>
+                    <span *ngIf="b.statusHomeId == 4" class="ml-auto">
+                      <button class="btn btn-dark" disabled>Đã trả</button></span>
+                    <span *ngIf="b.statusHomeId == 5" class="ml-auto">
+                      <button class="btn btn-dark" disabled>Đã hủy</button></span>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!--                Turn Over-->
+      <div class="col-lg-9" style="display: none" id="my-turn-over">
+        <h4 (click)="findTurnOverByAccountAndStartDate()">Doanh thu</h4>
+        <div class="col-md-12 hotel-single  mb-5 mt-5">
+          <div class="row">
+            <form [formGroup]="formTurnOver" (ngSubmit)="findTurnOverByAccountAndStartDate()" style="width: 825px">
+              <mat-label>Doanh thu theo thời gian</mat-label>
+              <br>
+              <mat-form-field class="example-full-width col-md-4" appearance="outline">
+                <mat-label>Ngày bắt đầu</mat-label>
+                <input type="date" matInput formControlName="startDate1">
+              </mat-form-field>
+              <mat-form-field class="example-full-width col-md-4" appearance="outline">
+                <mat-label>Ngày kết thúc</mat-label>
+                <input type="date" matInput formControlName="startDate2">
+              </mat-form-field>
+              <button style="margin-left: 30px" class="btn btn-dark col-md-3">Tìm kiếm</button>
+            </form>
+            <br>
+            <div>
+              <mat-label>Tổng doanh thu: {{totalTurnOver  | currency :'đ' :true: '1.0-0'}}</mat-label>
+            </div>
+            <br>
+            <hr>
+            <table mat-table [dataSource]="dataSource" matSort>
+
+              <!-- Progress Column -->
+              <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Tên Homestay </th>
+                <td mat-cell *matCellDef="let row"> {{row.name}} </td>
+              </ng-container>
+
+              <!-- Name Column -->
+              <ng-container matColumnDef="countPrice">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Số lượt thuê </th>
+                <td mat-cell *matCellDef="let row"> {{row.countPrice}} </td>
+              </ng-container>
+
+              <!-- Fruit Column -->
+              <ng-container matColumnDef="sumPrice">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Doanh thu </th>
+                <td mat-cell *matCellDef="let row"> {{row.sumPrice | currency :'đ' :true: '1.0-0'}} </td>
+              </ng-container>
+
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+              <!-- Row shown when there is no matching data. -->
+              <tr class="mat-row" *matNoDataRow>
+                <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+              </tr>
+            </table>
+
+            <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
